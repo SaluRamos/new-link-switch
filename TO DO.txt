@@ -1,8 +1,4 @@
-1 - Redirect
-2 - Registro
-3 - Link Info
-4 - Update Link
-5 - USER vip_time at table
-6 - show vip_time at index
-7 - Deploy na nuvem
-8 - Pagamento
+1 - Link Info
+2 - Update Link
+3 - Deploy na nuvem
+4 - Pagamento
