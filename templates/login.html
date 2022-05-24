@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <form method="post" action="{{ url_for('authenticate') }}">
+        <input type="hidden" name="next_page" value="{{ next_page }}"></input>
+        <username id="username">
+            <label>username:</label>
+            <input type="text" name="username" placeholder="Jhonny Depp"></input>
+        </username>
+        <password id="password">
+            <label>password:</label>
+            <input type="password" name="password" placeholder="●●●●●●●●●●●"></input>
+        </password>
+        <button id="login" type="submit">Login</button>
+        <button id="register" onclick="window.open('/register', '_self');">Register</button>
+    </form>
+</body>
+</html>

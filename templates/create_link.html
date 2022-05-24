@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/create_link.css">
+        <title>Link Switcher</title>
+    </head>
+    <body>
+        <form method="post" action="{{ url_for('new_link') }}">
+            <label class="text" style="grid-row: 1;margin-bottom: 10px;">YOUR REDIRECTION LINK NAME:</label>
+            <link_name_container>
+                <route_example>{{ app_link }}/{{ session['session_user'] }}/</route_example>
+                <input id="link_name_input" type="text" name="link_name" placeholder="ex. support"></input>
+            </link_name_container>
+            <observation id="observation">p.s ONLY THE LAST LINK IN THE LIST WILL BE IGNORED!</observation>
+            <link_list id="link_list">
+                <li class="a_link">
+                    <label class="link_index">link 1</label>
+                    <input type="text" name="link_1" class="link_input" value="" placeholder="{{ initial_link_input_value }}"></input>
+                </li>
+            </link_list>
+            <button type="button" id="remove_btn">REMOVE LAST LINK</button>
+            <button type="submit" id="sign_btn">CREATE REDIRECTION LINK</button>
+        </form>
+        <script defer>
+            let link_list = document.getElementById("link_list")
+            let link_name_input = document.getElementById("link_name_input")
+            let sign_btn = document.getElementById("sign_btn")
+            let remove_btn = document.getElementById("remove_btn")
+            let initial_link_input_value = "{{ initial_link_input_value }}"
+
+            setInterval(function(){
+                let links_elems = document.getElementsByClassName("a_link")
+                if(links_elems[(links_elems.length - 1)].getElementsByTagName("input")[0].value != "")
+                {
+                    link_index = links_elems.length + 1
+                    let new_link = document.createElement("li")
+                    new_link.className = "a_link"
+                    let new_link_index = document.createElement("label")
+                    new_link_index.textContent = "link " + link_index
+                    new_link_index.className = "link_index"
+                    new_link.appendChild(new_link_index)
+                    let new_link_input = document.createElement("input")
+                    new_link_input.type = "text"
+                    new_link_input.name = "link_" + link_index
+                    new_link_input.className = "link_input"
+                    new_link_input.value = ""
+                    new_link_input.placeholder = initial_link_input_value
+                    new_link.appendChild(new_link_input)
+                    link_list.appendChild(new_link)
+                }
+            }, 100)
+
+            remove_btn.onclick = function()
+            {
+                let links_elems = document.getElementsByClassName("a_link")
+                if(links_elems.length > 1)
+                {
+                    links_elems[(links_elems.length - 2)].getElementsByTagName("input")[0].value = ""
+                    links_elems[(links_elems.length - 1)].remove()
+                }
+            }
+        </script>
+    </body>
+</html>
