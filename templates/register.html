@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/form.css">
+    <title>Register</title>
 </head>
 <body>
-
+    <form method="post" action="{{ url_for('register') }}">
+        <name class="form_item">
+            <label>name:</label>
+            <input type="text" name="name" placeholder="Jhonny Depp" maxlength="50"></input>
+        </name>
+        <username class="form_item">
+            <label>username:</label>
+            <input type="text" name="username" placeholder="CaribbeanBoy" maxlength="30"></input>
+        </username>
+        <email class="form_item">
+            <label>email:</label>
+            <input type="text" name="email" placeholder="jhonnydepp@outlook.com" maxlength="40"></input>
+        </email>
+        <cellphone class="form_item">
+            <label>cellphone:</label>
+            <input type="text" name="cellphone" placeholder="(11) 9 4002 8922" maxlength="20"></input>
+        </cellphone>
+        <password class="form_item">
+            <label>password:</label>
+            <input type="password" name="password" placeholder="●●●●●●●●●●●" maxlength="50"></input>
+        </password>
+        <button type="submit">Register</button>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == "ERROR" %}
+                    <alert style="background-color: rgb(253, 92, 92);">
+                {% else %}
+                    <alert style="background-color: rgb(97, 253, 92);">
+                {% endif %}
+                    <h1 style="white-space: pre-line">{{ message }}</h1>
+                </alert>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 </body>
 </html>

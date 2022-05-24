@@ -9,24 +9,21 @@
         <title>Menu</title>
     </head>
     <link>
+        <h1 style="text-align: center;">vip remains until: {{ vip_time }}</h1>
         <btns>
-            <button id="create_link_btn" onclick="window.open('/create-link', '_self');" style="background-color: green;">CREATE LINK</button>
-            <button id="logout_btn" onclick="window.open('/logout', '_self');" style="background-color: red;">LOGOUT</button>
+            <button class="big_btn" onclick="window.open('/create-link', '_self');" style="background-color: rgb(3, 196, 3);">CREATE LINK</button>
+            <button class="big_btn" onclick="window.open('/get-vip', '_self');" style="background-color: rgb(94, 158, 255);">GET VIP</button>
+            <button class="big_btn" onclick="window.open('/logout', '_self');" style="background-color: rgb(254, 75, 75);">LOGOUT</button>
         </btns>
         <my_links>
-            {% set next_color = 0 %}
             {% for i in my_links %}
-            <link style="grid-row: {{ i.index }};">
-            {% if next_color == 0 %}
-                <link_name class="link_name" style="background-color: rgb(222, 222, 222);">{{ app_link }}/access/{{ session['session_user'] }}/{{ i.name }}</link_name>
-                {% set next_color = 1 %}
-            {% else %}
-                <link_name class="link_name" style="background-color: rgb(182, 182, 182);">{{ app_link }}/{{ session['session_user'] }}/{{ i.name }}/access</link_name>
-                {% set next_color = 0 %}
-            {% endif %}
+            <div class="link" style="grid-row: {{ loop.index }};">
+                <p class="link_name" style="background-color: rgb(222, 222, 222);">{{ app_link }}/access/{{ session['session_user'] }}/{{ i.name }}</p>
                 <button class="trash" onclick="window.open('/delete/{{ session['session_user'] }}/{{ i.name }}', '_self');"></button>
-                <button class="info" onclick="window.open('/info/{{ session['session_user'] }}/{{ i.name }}', '_self');"> LINK INFO</button>
-            </link>
+                <button class="normal_btn" onclick="window.open('/info/{{ session['session_user'] }}/{{ i.name }}', '_self');"> INFO</button>
+                <button class="normal_btn" onclick="window.open('/update/{{ session['session_user'] }}/{{ i.name }}', '_self');"> UPDATE</button>
+                <button class="normal_btn" onclick="window.open('/access/{{ session['session_user'] }}/{{ i.name }}', '_self');"> ACCESS</button>
+            </div>
             {% endfor %}
         </my_links>
     </body>

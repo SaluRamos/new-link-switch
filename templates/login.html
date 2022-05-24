@@ -4,22 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/form.css">
     <title>Login</title>
 </head>
 <body>
-    <form method="post" action="{{ url_for('authenticate') }}">
-        <input type="hidden" name="next_page" value="{{ next_page }}"></input>
-        <username id="username">
+    <form method="post" action="{{ url_for('login') }}">
+        <username class="form_item">
             <label>username:</label>
-            <input type="text" name="username" placeholder="Jhonny Depp"></input>
+            <input type="text" name="username" placeholder="Jhonny Depp" maxlength="30"></input>
         </username>
-        <password id="password">
+        <password class="form_item">
             <label>password:</label>
-            <input type="password" name="password" placeholder="●●●●●●●●●●●"></input>
+            <input type="password" name="password" placeholder="●●●●●●●●●●●" maxlength="50"></input>
         </password>
-        <button id="login" type="submit">Login</button>
-        <button id="register" onclick="window.open('/register', '_self');">Register</button>
+        <button type="submit">Login</button>
+        <button type="button" onclick="window.open('{{ url_for('register')}}', '_self');">Register</button>
     </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == "ERROR" %}
+                    <alert style="background-color: rgb(253, 92, 92);">
+                {% else %}
+                    <alert style="background-color: rgb(97, 253, 92);">
+                {% endif %}
+                    <h1 style="white-space: pre-line">{{ message }}</h1>
+                </alert>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 </body>
 </html>

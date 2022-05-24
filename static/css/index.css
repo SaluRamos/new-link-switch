@@ -2,13 +2,12 @@ btns{
     width: 100vw;
     display: flex;
     justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
-
-#create_link_btn, #logout_btn{
+.big_btn{
     padding: 4px;
-    margin-top: 5px;
-    margin-bottom: 5px;
     font-weight: bold;
     font-size: 20px;
     width: 200px;
@@ -16,29 +15,25 @@ btns{
     width: auto;
     cursor: pointer;
     margin-right: 10px;
-
     border: 2px solid black;
 }
 
 my_links{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto;
     justify-content: center;
-    align-items: center;
 }
 
-link{
-    margin-bottom: 10px;
-    padding-bottom: 2px;
+.link{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    margin-bottom: 5px;
 }
 
 .link_name{
-    grid-column: 1;
-    height: 100%;
-    font-size: 20px;
-    line-height: 40px;
-    text-align: right;
-    user-select: text;
+    line-height: 35px;
     margin-left: 5px;
     margin-right: 5px;
     padding-right: 5px;
@@ -46,7 +41,6 @@ link{
 }
 
 .trash{
-    grid-column: 2;
     margin-left: 5px;
     height: 35px;
     width: 35px;
@@ -57,12 +51,11 @@ link{
     cursor: pointer;
 }
 
-.info{
+.normal_btn{
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 8px;
     padding-right: 8px;
-    grid-column: 3;
     margin-left: 5px;
     text-align: center;
     font-size: 20px;

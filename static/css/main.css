@@ -10,9 +10,30 @@
     -ms-user-select: none; /*Internet Explorer/Edge*/
     user-select: none;
     overflow-x: hidden;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.text{
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border: 6px solid darkgray;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    border-color: gray;
+}
+
+p{
     font-size: 20px;
-    text-align: center;
+    user-select: text;
+}
+
+h1{
+    font-size: 20px;
+    font-weight: bold;
 }

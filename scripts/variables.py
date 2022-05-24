@@ -1,5 +1,5 @@
 import os
-from scripts.general import General
+from scripts.controller import Controller
 
 class Vars:
 
@@ -8,8 +8,7 @@ class Vars:
         server_port = int(os.environ["PORT"])
     except:
         server_port = 8080
-
     db = None
-    start_time = General.system_time_log()
+    start_time = Controller.system_time_log()
     initial_link_input_value = "paste here one of your links!"
     app_link = "https://link-switch.herokuapp.com"
